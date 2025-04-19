@@ -1,80 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <script>
-        //console.log('hello world')
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Rock Paper Scissors</title>
+    <script
+      src="https://kit.fontawesome.com/832d896112.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="container-one">
+      <div class="heading">
+        <h1>RoCk PapEr ScIsSoRs</h1>
+      </div>
+      <p class="subheading">
+        The battle against artificial intelligence for World dominance
+      </p>
+    </header>
 
-        function getComputerChoice() {
-         let guess = Math.floor(Math.random() * 3);
-         if (guess === 0) {
-            return "Rock";
-         }  else if (guess === 1) {
-            return "Paper";
-         } else {
-            return "Scissors";
-         }
-        };
-        //console.log(getComputerChoice());
+    <div class="container-two">
+      <h2 class="score-text">SCORELINE</h2>
+      <div class="scoreline">
+        <span class="human-score"> </span><span> - </span>
+        <span class="comp-score"> </span>
+      </div>
+      <div class="line-one"></div>
+      <p class="choice-text">CHOOSE YOUR FATE</p>
+      <div class="final-winner"></div>
+    </div>
 
-        function getHumanChoice() {
-         let choice = prompt('Input your choice', '');
-         if (choice.toLowerCase() === 'rock') {
-            return 'rock';
-         } else if (choice.toLowerCase() === 'paper')  {
-            return 'paper';
-         } else if (choice.toLowerCase() === 'scissors')  {
-            return 'scissors';
-         } else {
-            return 'we only do rock or paper or scissors here'
-         }
-        }
-        //console.log(getHumanChoice())
-
-
-
-        function playGame() {
-         let humanScore = 0;
-         let computerScore = 0;
-
-         for ( let i = 0; i < 5; i++) {
-            function playRound (humanChoice, computerChoice) {
-            if (humanChoice === computerChoice) {
-               return 'tie';
-            } else if (humanChoice === 'rock' && computerChoice === 'scissors') {
-               return 'rock crushes scissors';
-               humanScore++;
-            } else if (humanChoice === 'paper' && computerChoice === 'scissors') {
-               return 'scissors cuts paper';
-               computerScore++;
-            } else if (humanChoice === 'scissor' && computerChoice === 'rock') {
-               return 'rock crushes scissors';
-               computerScore++;
-            } else if (humanChoice === 'scissors' && computerChoice === 'paper') {
-               return 'scissors cuts paper';
-               humanScore++;
-            } else if (humanChoice === 'rock' && computerChoice === 'paper') {
-               return 'paper covers rock';
-               computerScore++;
-            } else if (humanChoice === 'paper' && computerChoice === 'rock') {
-               return 'paper covers rock';
-               humanScore++;
-            } 
-         }
-
-         const humanSelection = getHumanChoice();
-         const computerSelection = getComputerChoice();
-
-        playRound(humanSelection, computerSelection);
-
-         }
-        }
-
-        playGame()
-    </script>
-</body>
+    <div class="container-three">
+      <div class="icons">
+        <i class="fa-solid fa-hand-fist" id="rock"></i>
+        <i class="fa-solid fa-hand" id="paper"></i>
+        <i class="fa-solid fa-hand-scissors" id="scissors"></i>
+      </div>
+      <div class="result-text">
+        <p class="win-text"></p>
+        <p class="lose-text"></p>
+        <p class="tie-text"></p>
+      </div>
+    </div>
+  </body>
 </html>

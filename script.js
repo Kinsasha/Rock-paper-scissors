@@ -1,66 +1,84 @@
+//creating computer choice
 function getComputerChoice() {
-    let guess = Math.floor(Math.random() * 3);
-    if (guess === 0) {
-       return "Rock";
-    }  else if (guess === 1) {
-       return "Paper";
-    } else {
-       return "Scissors";
-    }
-   };
-   //console.log(getComputerChoice());
+  const choice = Math.floor(Math.random() * 3);
+  if (choice === 0) {
+    return "rock";
+  } else if (choice === 1) {
+    return "paper";
+  } else {
+    return "scissors";
+  }
+}
+//console.log(getComputerChoice());
 
-   function getHumanChoice() {
-    let choice = prompt('Input your choice', '');
-    if (choice.toLowerCase() === 'rock') {
-       return 'rock';
-    } else if (choice.toLowerCase() === 'paper')  {
-       return 'paper';
-    } else if (choice.toLowerCase() === 'scissors')  {
-       return 'scissors';
-    } else {
-       return 'we only do rock or paper or scissors here'
-    }
-   }
-   //console.log(getHumanChoice())
+//importing the icons
+const iconOne = document.querySelector("#rock");
+const iconTwo = document.querySelector("#paper");
+const iconThree = document.querySelector("#scissors");
 
+iconOne.addEventListener("click", () => {
+  playgame("rock");
+});
+iconTwo.addEventListener("click", () => {
+  playgame("paper");
+});
+iconThree.addEventListener("click", () => {
+  playgame("scissors");
+});
 
+//console.log(compVal);
 
-   function playGame() {
-    let humanScore = 0;
-    let computerScore = 0;
+const winText = document.querySelector(".win-text");
+const loseText = document.querySelector(".lose-text");
+const tieText = document.querySelector(".tie-text");
 
-    for ( let i = 0; i < 5; i++) {
-       function playRound (humanChoice, computerChoice) {
-       if (humanChoice === computerChoice) {
-          return 'tie';
-       } else if (humanChoice === 'rock' && computerChoice === 'scissors') {
-          return 'rock crushes scissors';
-          humanScore++;
-       } else if (humanChoice === 'paper' && computerChoice === 'scissors') {
-          return 'scissors cuts paper';
-          computerScore++;
-       } else if (humanChoice === 'scissor' && computerChoice === 'rock') {
-          return 'rock crushes scissors';
-          computerScore++;
-       } else if (humanChoice === 'scissors' && computerChoice === 'paper') {
-          return 'scissors cuts paper';
-          humanScore++;
-       } else if (humanChoice === 'rock' && computerChoice === 'paper') {
-          return 'paper covers rock';
-          computerScore++;
-       } else if (humanChoice === 'paper' && computerChoice === 'rock') {
-          return 'paper covers rock';
-          humanScore++;
-       } 
-    }
+let winScore = 0;
+let loseScore = 0;
+let tieScore = 0;
 
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
+function playgame(humanChoice) {
+  let humanSelection = humanChoice;
+  const compVal = getComputerChoice();
 
-   playRound(humanSelection, computerSelection);
+  if (humanSelection === compVal) {
+    tieScore;
+    winText.textContent = "";
+    loseText.textContent = "";
+    tieText.textContent = "";
+    tieText.textContent = "Tie";
+  } else if (
+    (humanSelection === "rock" && compVal === "scissors") ||
+    (humanSelection === "scissors" && compVal === "paper") ||
+    (humanSelection === "paper" && compVal === "rock")
+  ) {
+    winText.textContent = "";
+    loseText.textContent = "";
+    tieText.textContent = "";
+    winText.textContent = `You win, ${humanSelection} beats ${compVal}`;
 
-    }
-   }
+    winScore += 1;
+  } else if (
+    (humanSelection === "paper" && compVal === "scissors") ||
+    (humanSelection === "scissors" && compVal === "rock") ||
+    (humanSelection === "rock" && compVal === "paper")
+  ) {
+    winText.textContent = "";
+    loseText.textContent = "";
+    tieText.textContent = "";
+    loseText.textContent = `You lose, ${compVal} beats ${humanSelection}`;
 
-   playGame()
+    loseScore += 1;
+  }
+
+  const compScoreDisplay = document.querySelector(".comp-score");
+  const humanScoreDisplay = document.querySelector(".human-score");
+
+  humanScoreDisplay.textContent = winScore;
+  compScoreDisplay.textContent = loseScore;
+}
+
+function winnerCheck() {
+  if (winScore === 5) {
+  }
+}
+//console.log(playgame('rock'))

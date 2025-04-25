@@ -9,24 +9,25 @@ function getComputerChoice() {
     return "scissors";
   }
 }
-//console.log(getComputerChoice());
 
 //importing the icons
 const iconOne = document.querySelector("#rock");
 const iconTwo = document.querySelector("#paper");
 const iconThree = document.querySelector("#scissors");
 
-iconOne.addEventListener("click", () => {
-  playgame("rock");
-});
-iconTwo.addEventListener("click", () => {
-  playgame("paper");
-});
-iconThree.addEventListener("click", () => {
-  playgame("scissors");
-});
+iconOne.addEventListener("click", forRock);
+iconTwo.addEventListener("click", forPaper);
+iconThree.addEventListener("click", forScissors);
 
-//console.log(compVal);
+function forRock() {
+  playgame("rock");
+}
+function forPaper() {
+  playgame("paper");
+}
+function forScissors() {
+  playgame("scissors");
+}
 
 const winText = document.querySelector(".win-text");
 const loseText = document.querySelector(".lose-text");
@@ -92,32 +93,9 @@ function winnerCheck() {
 }
 
 function endgame() {
-  iconThree.removeEventListener("click", forRock);
+  iconOne.removeEventListener("click", forRock);
 
-  iconThree.removeEventListener("click", forPaper);
+  iconTwo.removeEventListener("click", forPaper);
 
   iconThree.removeEventListener("click", forScissors);
 }
-
-function forRock() {
-  playgame("scissors");
-}
-function forPaper() {
-  playgame("scissors");
-}
-function forScissors() {
-  playgame("scissors");
-}
-
-/*function endgame() {
-  iconOne.removeEventListener("click", () => {
-    playgame("rock");
-  });
-  iconTwo.removeEventListener("click", () => {
-    playgame("paper");
-  });
-  iconThree.removeEventListener("click", () => {
-    playgame("scissors");
-  });
-}*/
-//console.log(playgame('rock'))

@@ -75,10 +75,49 @@ function playgame(humanChoice) {
 
   humanScoreDisplay.textContent = winScore;
   compScoreDisplay.textContent = loseScore;
+
+  winnerCheck();
 }
+
+const finalWinner = document.querySelector(".final-winner");
 
 function winnerCheck() {
   if (winScore === 5) {
+    finalWinner.textContent = "You won";
+    endgame();
+  } else if (loseScore === 5) {
+    finalWinner.textContent = "You lost";
+    endgame();
   }
 }
+
+function endgame() {
+  iconThree.removeEventListener("click", forRock);
+
+  iconThree.removeEventListener("click", forPaper);
+
+  iconThree.removeEventListener("click", forScissors);
+}
+
+function forRock() {
+  playgame("scissors");
+}
+function forPaper() {
+  playgame("scissors");
+}
+function forScissors() {
+  playgame("scissors");
+}
+
+/*function endgame() {
+  iconOne.removeEventListener("click", () => {
+    playgame("rock");
+  });
+  iconTwo.removeEventListener("click", () => {
+    playgame("paper");
+  });
+  iconThree.removeEventListener("click", () => {
+    playgame("scissors");
+  });
+}*/
 //console.log(playgame('rock'))

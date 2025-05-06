@@ -81,13 +81,18 @@ function playgame(humanChoice) {
 }
 
 const finalWinner = document.querySelector(".final-winner");
+const roundWinner = document.querySelector(".round-winner-text");
 
 function winnerCheck() {
   if (winScore === 5) {
     finalWinner.textContent = "You won";
+    roundWinner.textContent =
+      "End of this round. Click on the restart button to start again.";
     endgame();
   } else if (loseScore === 5) {
     finalWinner.textContent = "You lost";
+    roundWinner.textContent =
+      "End of this round. Click on the restart button to start again.";
     endgame();
   }
 }
